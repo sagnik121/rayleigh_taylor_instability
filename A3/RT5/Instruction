@@ -1,0 +1,2 @@
+Use in following sequence :
+blockMesh > decomposePar > then copy to cluster > qsub jobScript > then copy back again to your machine with visual interface > reconstructPar > paraFoam

@@ -1,0 +1,24 @@
+#!/bin/sh
+#
+#This is an example script to execute a parallel job with OpenFOAM
+# ! Be sure to have decompose using decomposePar before submitting this script
+#
+#These commands set up the Grid Environment for your job:
+# Output folder for the journal file
+#PBS -o /nfs/home/ofoam4/OpenFOAM/ofoam-6/FinalProject/finalproject/A1/RT2
+#PBS -j oe
+# Name of the job
+#PBS -N experiment3procs
+#PBS -q batch
+#PBS -l nodes=1:ppn=4:buddies
+# E-mail address at which notification will be sent
+#PBS -M ge65rot@mytum.de
+#PBS -m abe
+
+# Load OpenFOAM-6
+source /nfs/etc/bashrc
+OF60
+# Change the current directory to the case directory
+cd /nfs/home/ofoam4/OpenFOAM/ofoam-6/FinalProject/finalproject/A1/RT2
+# Execute interFoam on the current case directory
+mpiexec interFoam -parallel > log.interFoam
